@@ -84,6 +84,8 @@ function componentFiles() {
       null,
       2,
     ) + '\n',
+    'src/vite-env.d.ts': `/// <reference types="vite/client" />
+`,
     'vite.config.ts': `import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
