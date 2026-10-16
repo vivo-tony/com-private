@@ -1,0 +1,2 @@
+/* 全局注入设计 token，保证文档站里所有组件示例都有颜色/间距（组件样式用 var(--mas-*)） */
+@import '../../packages/shared/src/tokens.css';

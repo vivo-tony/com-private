@@ -39,10 +39,43 @@ for (const [rel, content] of Object.entries(componentFiles())) {
   writeFileSync(p, content)
 }
 
+// 生成 dumi 文档页骨架（demo 单一来源：直接指向组件的就地 demo.tsx）
+const docFile = resolve(root, 'docs/docs/components', kebab, 'index.md')
+mkdirSync(dirname(docFile), { recursive: true })
+writeFileSync(docFile, docIndexFile())
+
 console.log(`✅ 已生成 packages/${dirName}`)
 console.log(`   pnpm --filter ${pkgName} dev   # 就地调试页`)
 console.log('   记得在 packages/components-all/src/index.ts 加一行：')
 console.log(`     export * from '${pkgName}'`)
+
+function docIndexFile() {
+  return `---
+title: ${pascal}
+nav:
+  title: 组件
+  order: 10
+group:
+  title: 通用
+  order: 10
+---
+
+# ${pascal}
+
+<!-- TODO: 何时使用，一句话说明 -->
+
+## 代码演示
+
+<code src="../../../../packages/components-${kebab}/src/demo.tsx"></code>
+
+## API
+
+<!-- TODO: 补充属性说明 -->
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+`
+}
 
 function componentFiles() {
   return {

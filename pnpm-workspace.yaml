@@ -1,10 +1,11 @@
 packages:
   - 'packages/*'
+  - 'docs'
 
 # pnpm 11 默认拦截依赖的 postinstall 脚本
 allowBuilds:
   esbuild: true          # tsup/vite 依赖，必须放行
-  '@swc/core': false     # 以下为 dumi 残留依赖，已移除 docs，不再需要
+  '@swc/core': false     # dumi 构建走 webpack/babel，不需要 swc 原生二进制
   '@parcel/watcher': false
   'core-js': false
   'core-js-pure': false
