@@ -33,9 +33,3 @@ import { Button } from '@mas/components-button'
 import '@mas/components-button/style.css'
 import '@mas/shared/tokens.css'
 ```
-
-## 引入 SDK
-
-```ts
-import { createClient } from '@mas/sdk'
-```

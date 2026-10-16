@@ -77,35 +77,6 @@ importers:
         specifier: ^4.3.0
         version: 4.5.4(rollup@4.63.3)(supports-color@8.1.1)(typescript@5.9.3)(vite@6.4.3(jiti@2.7.0)(less@4.9.1(supports-color@8.1.1))(lightningcss@1.22.1)(sass@1.104.1)(terser@5.51.2))
 
-  packages/sdk:
-    dependencies:
-      '@mas/sdk-request':
-        specifier: workspace:*
-        version: link:../sdk-request
-    devDependencies:
-      tsup:
-        specifier: ^8.3.5
-        version: 8.5.1(@microsoft/api-extractor@7.59.1(@types/node@17.0.45))(@swc/core@1.9.2(@swc/helpers@0.5.15))(jiti@2.7.0)(postcss@8.5.28)(supports-color@8.1.1)(typescript@5.9.3)
-      typescript:
-        specifier: ^5.6.3
-        version: 5.9.3
-
-  packages/sdk-request:
-    dependencies:
-      '@mas/shared':
-        specifier: workspace:*
-        version: link:../shared
-    devDependencies:
-      tsup:
-        specifier: ^8.3.5
-        version: 8.5.1(@microsoft/api-extractor@7.59.1(@types/node@17.0.45))(@swc/core@1.9.2(@swc/helpers@0.5.15))(jiti@2.7.0)(postcss@8.5.28)(supports-color@8.1.1)(typescript@5.9.3)
-      typescript:
-        specifier: ^5.6.3
-        version: 5.9.3
-      vite:
-        specifier: ^6.0.7
-        version: 6.4.3(@types/node@17.0.45)(jiti@2.7.0)(less@4.9.1(supports-color@8.1.1))(lightningcss@1.22.1)(sass@1.104.1)(terser@5.51.2)
-
   packages/shared:
     devDependencies:
       tsup:

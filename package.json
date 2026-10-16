@@ -8,7 +8,6 @@
     "build": "pnpm -r --filter \"./packages/*\" build",
     "dev:button": "pnpm --filter @mas/components-button dev",
     "dev:components-all": "pnpm --filter @mas/components-all dev",
-    "dev:sdk-request": "pnpm --filter @mas/sdk-request dev",
     "new": "node scripts/create-package.mjs",
     "changeset": "changeset",
     "version": "changeset version",

@@ -18,9 +18,6 @@ import '@mas/components-all/style.css'      // 聚合样式（含 token）
 import { Button } from '@mas/components-button'
 import '@mas/components-button/style.css'
 import '@mas/shared/tokens.css'         // token 变量只需引一次
-
-// ③ SDK
-import { createClient } from '@mas/sdk'
 ```
 
 ## CDN 引用（script 标签）

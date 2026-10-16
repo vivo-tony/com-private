@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-// 脚手架：生成独立组件包 / SDK 包
+// 脚手架：生成独立组件包
 // 用法：
 //   node scripts/create-package.mjs component table   -> packages/components-table
-//   node scripts/create-package.mjs sdk auth           -> packages/sdk-auth
 
 import { mkdirSync, writeFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
@@ -11,16 +10,12 @@ import { fileURLToPath } from 'node:url'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const [type, rawName] = process.argv.slice(2)
 
-if (!type || !rawName) {
-  console.error('用法: node scripts/create-package.mjs <component|sdk> <name>')
-  process.exit(1)
-}
-if (type !== 'component' && type !== 'sdk') {
-  console.error('type 只能是 component 或 sdk')
+if (type !== 'component' || !rawName) {
+  console.error('用法: node scripts/create-package.mjs component <name>')
   process.exit(1)
 }
 if (!/^[a-z][a-z0-9-]*$/.test(rawName)) {
-  console.error('name 必须是小写 kebab-case，如 table、auth')
+  console.error('name 必须是小写 kebab-case，如 table')
   process.exit(1)
 }
 
@@ -29,8 +24,8 @@ const pascal = kebab
   .split('-')
   .map((s) => s[0].toUpperCase() + s.slice(1))
   .join('')
-const pkgName = type === 'component' ? `@mas/components-${kebab}` : `@mas/sdk-${kebab}`
-const dirName = type === 'component' ? `components-${kebab}` : `sdk-${kebab}`
+const pkgName = `@mas/components-${kebab}`
+const dirName = `components-${kebab}`
 const dir = resolve(root, 'packages', dirName)
 
 if (existsSync(dir)) {
@@ -38,9 +33,7 @@ if (existsSync(dir)) {
   process.exit(1)
 }
 
-const files = type === 'component' ? componentFiles() : sdkFiles()
-
-for (const [rel, content] of Object.entries(files)) {
+for (const [rel, content] of Object.entries(componentFiles())) {
   const p = resolve(dir, rel)
   mkdirSync(dirname(p), { recursive: true })
   writeFileSync(p, content)
@@ -48,7 +41,7 @@ for (const [rel, content] of Object.entries(files)) {
 
 console.log(`✅ 已生成 packages/${dirName}`)
 console.log(`   pnpm --filter ${pkgName} dev   # 就地调试页`)
-console.log(`   记得在 packages/${type === 'component' ? 'components' : 'sdk'}/src/index.ts 加一行：`)
+console.log('   记得在 packages/components-all/src/index.ts 加一行：')
 console.log(`     export * from '${pkgName}'`)
 
 function componentFiles() {
@@ -187,79 +180,6 @@ function Gallery() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<Gallery />)
-`,
-  }
-}
-
-function sdkFiles() {
-  return {
-    'package.json': JSON.stringify(
-      {
-        name: pkgName,
-        version: '0.0.0',
-        description: `${pascal} SDK`,
-        type: 'module',
-        main: './dist/index.cjs',
-        module: './dist/index.js',
-        types: './dist/index.d.ts',
-        exports: {
-          '.': { types: './dist/index.d.ts', import: './dist/index.js', require: './dist/index.cjs' },
-        },
-        sideEffects: false,
-        files: ['dist'],
-        scripts: { build: 'tsup', dev: 'vite --config vite.demo.config.ts' },
-        dependencies: { '@mas/shared': 'workspace:*' },
-        publishConfig: { access: 'restricted' },
-        devDependencies: { tsup: '^8.3.5', typescript: '^5.6.3', vite: '^6.0.7' },
-      },
-      null,
-      2,
-    ) + '\n',
-    'tsconfig.json': JSON.stringify(
-      { extends: '../../tsconfig.base.json', compilerOptions: { rootDir: 'src', outDir: 'dist' }, include: ['src'] },
-      null,
-      2,
-    ) + '\n',
-    'tsup.config.ts': `import { defineConfig } from 'tsup'
-
-export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['esm', 'cjs'],
-  dts: { respectExternal: true },
-  clean: true,
-  sourcemap: true,
-  treeshake: true,
-})
-`,
-    'vite.demo.config.ts': `import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
-
-export default defineConfig({
-  root: 'dev',
-  resolve: { alias: { '@mas/shared': fileURLToPath(new URL('../shared/src/index.ts', import.meta.url)) } },
-  server: { port: 5176 },
-})
-`,
-    'src/index.ts': `export function hello${pascal}(name: string): string {
-  return \`hello \${name} from ${pkgName}\`
-}
-`,
-    'dev/index.html': `<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <title>${kebab} dev</title>
-  </head>
-  <body>
-    <h1>${kebab} dev</h1>
-    <pre id="out"></pre>
-    <script type="module" src="/main.ts"></script>
-  </body>
-</html>
-`,
-    'dev/main.ts': `import { hello${pascal} } from '../src'
-
-document.getElementById('out')!.textContent = hello${pascal}('world')
 `,
   }
 }
