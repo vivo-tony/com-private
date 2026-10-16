@@ -10,13 +10,11 @@
     "dev:components-all": "pnpm --filter @mas/components-all dev",
     "dev:docs": "pnpm --filter docs dev",
     "new": "node scripts/create-package.mjs",
-    "changeset": "changeset",
-    "version": "changeset version",
-    "release": "pnpm build && changeset publish",
+    "version": "node scripts/version.mjs",
+    "release": "pnpm build && pnpm -r --filter \"./packages/*\" publish",
     "clean": "pnpm -r exec rm -rf dist"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.9",
     "typescript": "^5.6.3"
   }
 }

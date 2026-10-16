@@ -38,7 +38,7 @@ pipeline {
           sh '''
             git config user.name "jenkins"
             git config user.email "jenkins@your-company.com"
-            pnpm changeset version
+            node scripts/version.mjs
             git add .
             git commit -m "chore: version packages [skip ci]" || true
             git push "https://${GIT_USER}:${GIT_TOKEN}@${GIT_REPO#https://}" HEAD:main || true
@@ -51,7 +51,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'npm-token', variable: 'NPM_TOKEN')]) {
           // .npmrc 里已写 @mas:registry 指向私有源，并引用 ${NPM_TOKEN}
-          sh 'pnpm changeset publish'
+          sh 'pnpm -r --filter "./packages/*" publish'
         }
       }
     }

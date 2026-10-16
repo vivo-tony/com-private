@@ -30,8 +30,8 @@
 
 ## 版本与发布
 
-1. 改动后 `pnpm changeset` 记变更（semver）。
-2. `pnpm version` 更新版本 → `pnpm release` 构建并发布私有 npm。
+1. 改动后 `pnpm version` 把所有包版本统一设为当前时间戳（`YYYY.M.D-HHmmss`）。
+2. 提交版本变更，再 `pnpm release` 构建并发布私有 npm。
 3. CDN：`pnpm build` 后 `node scripts/deploy-cdn.mjs`，按打印的 ossutil 命令上传到 OSS。
 
 ## 对外接入方式

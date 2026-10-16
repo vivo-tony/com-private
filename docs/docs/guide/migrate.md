@@ -35,7 +35,7 @@ pnpm new component table   # 生成 packages/components-table
 在 `packages/components-all/src/index.ts` 加一行 `export * from '@mas/components-table'`，然后：
 
 ```bash
-pnpm changeset
+pnpm version
 ```
 
 之后走正常发布，npm 与 CDN 双通道自动生效。

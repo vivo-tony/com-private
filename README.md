@@ -39,7 +39,8 @@ pnpm new component table   # 生成 packages/components-table
 
 ```bash
 pnpm build     # 按拓扑顺序构建所有包 → 各包 dist/
-pnpm changeset # 记录变更 → pnpm version → pnpm release 发布私有源
+pnpm version   # 所有包版本统一设为当前时间戳（YYYY.M.D-HHmmss）
+pnpm release   # 构建 + 发布到私有源
 ```
 
 ## 引用方式
@@ -59,5 +60,5 @@ import '@mas/components-all/style.css'
 
 - 每个组件包 `sideEffects: ["**/*.css"]`，其它包 `sideEffects: false`，保证 tree-shaking。
 - React/ReactDOM 始终是 `peerDependencies`；`@mas/shared` 是 `dependencies`，不打进各包产物。
-- 跨包引用用 `workspace:*`，发布时 changesets 自动替换成真实版本。
+- 跨包引用用 `workspace:*`，发布时 `pnpm version` 自动替换成时间戳版本。
 - 各包 dev 页通过 alias 把 `@mas/shared` 直连源码，改地基也即时热更。
