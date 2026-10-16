@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@mas/components-button': fileURLToPath(new URL('../components-button/src/index.ts', import.meta.url)),
+      '@mas/components-upload': fileURLToPath(new URL('../components-upload/src/index.ts', import.meta.url)),
       '@mas/shared': fileURLToPath(new URL('../shared/src/index.ts', import.meta.url)),
     },
   },

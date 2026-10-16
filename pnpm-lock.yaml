@@ -20,6 +20,9 @@ importers:
       '@mas/components-button':
         specifier: workspace:*
         version: link:../components-button
+      '@mas/components-upload':
+        specifier: workspace:*
+        version: link:../components-upload
     devDependencies:
       '@types/react':
         specifier: ^18.3.12
@@ -47,6 +50,37 @@ importers:
         version: 6.4.3(@types/node@17.0.45)(jiti@2.7.0)(less@4.9.1(supports-color@8.1.1))(lightningcss@1.22.1)(sass@1.104.1)(terser@5.51.2)
 
   packages/components-button:
+    dependencies:
+      '@mas/shared':
+        specifier: workspace:*
+        version: link:../shared
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.31
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.7(@types/react@18.3.31)
+      '@vitejs/plugin-react':
+        specifier: ^4.3.4
+        version: 4.7.0(supports-color@8.1.1)(vite@6.4.3(jiti@2.7.0)(less@4.9.1(supports-color@8.1.1))(lightningcss@1.22.1)(sass@1.104.1)(terser@5.51.2))
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      typescript:
+        specifier: ^5.6.3
+        version: 5.9.3
+      vite:
+        specifier: ^6.0.7
+        version: 6.4.3(@types/node@17.0.45)(jiti@2.7.0)(less@4.9.1(supports-color@8.1.1))(lightningcss@1.22.1)(sass@1.104.1)(terser@5.51.2)
+      vite-plugin-dts:
+        specifier: ^4.3.0
+        version: 4.5.4(rollup@4.63.3)(supports-color@8.1.1)(typescript@5.9.3)(vite@6.4.3(jiti@2.7.0)(less@4.9.1(supports-color@8.1.1))(lightningcss@1.22.1)(sass@1.104.1)(terser@5.51.2))
+
+  packages/components-upload:
     dependencies:
       '@mas/shared':
         specifier: workspace:*

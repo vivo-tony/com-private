@@ -21,7 +21,8 @@
     "dev": "vite --config vite.demo.config.ts"
   },
   "dependencies": {
-    "@mas/components-button": "workspace:*"
+    "@mas/components-button": "workspace:*",
+    "@mas/components-upload": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18",

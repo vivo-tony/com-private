@@ -1,0 +1,70 @@
+.mas-upload__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88px;
+  padding: var(--mas-spacing-medium);
+  border: 1px dashed var(--mas-color-border);
+  border-radius: var(--mas-radius-medium);
+  background: var(--mas-color-bg);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.mas-upload__trigger:hover {
+  border-color: var(--mas-color-primary);
+}
+.mas-upload--disabled .mas-upload__trigger {
+  cursor: not-allowed;
+  background: var(--mas-color-bg-disabled);
+}
+.mas-upload__input {
+  display: none;
+}
+.mas-upload__default {
+  color: var(--mas-color-text-secondary);
+  font-size: var(--mas-font-size-medium);
+}
+.mas-upload__list {
+  margin: var(--mas-spacing-small) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.mas-upload__item {
+  display: flex;
+  align-items: center;
+  gap: var(--mas-spacing-medium);
+  padding: var(--mas-spacing-small) 0;
+  border-bottom: 1px solid var(--mas-color-border-secondary);
+}
+.mas-upload__name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--mas-font-size-medium);
+}
+.mas-upload__progress {
+  flex: none;
+  width: 120px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--mas-color-border-secondary);
+  overflow: hidden;
+}
+.mas-upload__bar {
+  display: block;
+  height: 100%;
+  background: var(--mas-color-primary);
+  transition: width 0.2s;
+}
+.mas-upload__status {
+  flex: none;
+  width: 18px;
+  text-align: center;
+}
+.mas-upload__status--done {
+  color: var(--mas-color-success);
+}
+.mas-upload__status--error {
+  color: var(--mas-color-danger);
+}
