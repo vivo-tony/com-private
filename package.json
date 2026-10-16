@@ -1,0 +1,22 @@
+{
+  "name": "mas-center",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "build": "pnpm -r --filter \"./packages/*\" build",
+    "dev:button": "pnpm --filter @mas/components-button dev",
+    "dev:components-all": "pnpm --filter @mas/components-all dev",
+    "dev:sdk-request": "pnpm --filter @mas/sdk-request dev",
+    "new": "node scripts/create-package.mjs",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish",
+    "clean": "pnpm -r exec rm -rf dist"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.9",
+    "typescript": "^5.6.3"
+  }
+}

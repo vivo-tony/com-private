@@ -1,0 +1,33 @@
+{
+  "name": "@mas/sdk-request",
+  "version": "0.0.0",
+  "description": "请求 SDK（fetch 封装 + 日志）",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup",
+    "dev": "vite --config vite.demo.config.ts"
+  },
+  "dependencies": {
+    "@mas/shared": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7"
+  }
+}

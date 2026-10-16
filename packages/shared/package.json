@@ -1,0 +1,30 @@
+{
+  "name": "@mas/shared",
+  "version": "0.0.0",
+  "description": "公共地基：设计 token / 通用工具 / 类型",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "sideEffects": ["**/*.css"],
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup && node ../../scripts/gen-tokens.mjs",
+    "dev": "tsup --watch"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.5",
+    "typescript": "^5.6.3"
+  }
+}

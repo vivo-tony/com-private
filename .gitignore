@@ -1,0 +1,18 @@
+node_modules/
+dist/
+cdn-output/
+*.local
+*.log
+.DS_Store
+.turbo/
+coverage/
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# dumi 构建缓存
+docs/.dumi/tmp/
+docs/.dumi/tmp-production/
+
+# 本地 Claude Code 配置（机器相关，不进仓库）
+.claude/settings.local.json

@@ -1,0 +1,43 @@
+.mas-btn {
+  border: 1px solid transparent;
+  border-radius: var(--mas-radius-medium);
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.2s;
+}
+.mas-btn--small {
+  padding: var(--mas-spacing-small) var(--mas-spacing-large);
+  font-size: var(--mas-font-size-small);
+}
+.mas-btn--medium {
+  padding: var(--mas-spacing-medium) var(--mas-spacing-xlarge);
+  font-size: var(--mas-font-size-medium);
+}
+.mas-btn--large {
+  padding: var(--mas-spacing-large) var(--mas-spacing-xxlarge);
+  font-size: var(--mas-font-size-large);
+}
+.mas-btn--primary {
+  background: var(--mas-color-primary);
+  color: var(--mas-color-text-inverse);
+}
+.mas-btn--primary:hover {
+  background: var(--mas-color-primary-hover);
+}
+.mas-btn--default {
+  background: var(--mas-color-bg);
+  border-color: var(--mas-color-border);
+  color: var(--mas-color-text);
+}
+.mas-btn--default:hover {
+  border-color: var(--mas-color-primary);
+  color: var(--mas-color-primary);
+}
+.mas-btn--danger {
+  background: var(--mas-color-danger);
+  color: var(--mas-color-text-inverse);
+}
+.mas-btn--danger:hover {
+  background: var(--mas-color-danger-hover);
+}
